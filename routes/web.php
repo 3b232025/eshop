@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartItemController;
 
 Route::resource('products', ProductController::class) ->only([
     'index', 'store', 'show', 'update', 'destroy'
@@ -45,6 +46,10 @@ URI：/products/{product}
 HTTP 動詞：DELETE
 控制器與方法：ProductController@destroy
 */
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('cart_items', CartItemController::class)->only(['index']);
+});
 
 
 Route::get('/', function () {
