@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 
-Route::resource('products', ProductController::class) ->only([
+/*Route::resource('products', ProductController::class) ->only([
     'index', 'store', 'show', 'update', 'destroy'
 ]);
 
@@ -34,6 +34,19 @@ Route::resource('products', ProductController::class) ->only([
 - eshop 作業重點在 CRUD 邏輯與 API 行為，因此不需要 create、edit 表單頁
 - 所以本專案使用 Route::resource 搭配 only()，限制只產生必要的 5 條路由
 */
+
+
+// 以下為 Route::resource('products', ProductController::class)
+// 預設產生的七個路由（等價寫法）
+
+Route::get('/products', [ProductController::class, 'index']);        // 顯示商品列表
+Route::get('/products/create', [ProductController::class, 'create']); // 顯示新增商品表單
+Route::post('/products', [ProductController::class, 'store']);       // 新增商品
+Route::get('/products/{product}', [ProductController::class, 'show']); // 顯示單一商品
+Route::get('/products/{product}/edit', [ProductController::class, 'edit']); // 編輯商品表單
+Route::put('/products/{product}', [ProductController::class, 'update']); // 更新商品
+Route::delete('/products/{product}', [ProductController::class, 'destroy']); // 刪除商品
+
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('cart_items', CartItemController::class)->only(['index']);
