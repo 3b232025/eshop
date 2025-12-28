@@ -12,40 +12,27 @@ Route::resource('products', ProductController::class) ->only([
 ]);
 
 /*
-products.index
-URI：/products
-HTTP 動詞：GET
-控制器與方法：ProductController@index
+【為何只保留這 5 條路由？】
 
-products.create
-URI：/products/create
-HTTP 動詞：GET
-控制器與方法：ProductController@create
+1) index（GET /products）
+   - 顯示商品列表頁
 
-products.store
-URI：/products
-HTTP 動詞：POST
-控制器與方法：ProductController@store
+2) show（GET /products/{product}）
+   - 顯示單一商品詳細資料
 
-products.show
-URI：/products/{product}
-HTTP 動詞：GET
-控制器與方法：ProductController@show
+3) store（POST /products）
+   - 新增商品資料（不另外設計 create 表單頁）
 
-products.edit
-URI：/products/{product}/edit
-HTTP 動詞：GET
-控制器與方法：ProductController@edit
+4) update（PUT/PATCH /products/{product}）
+   - 更新商品資料
 
-products.update
-URI：/products/{product}
-HTTP 動詞：PUT / PATCH
-控制器與方法：ProductController@update
+5) destroy（DELETE /products/{product}）
+   - 刪除商品資料
 
-products.destroy
-URI：/products/{product}
-HTTP 動詞：DELETE
-控制器與方法：ProductController@destroy
+【與 blog/admin 專案的差異】
+- blog/admin 專案屬於後台管理系統，需要 create / edit 頁面來操作表單
+- eshop 作業重點在 CRUD 邏輯與 API 行為，因此不需要 create、edit 表單頁
+- 所以本專案使用 Route::resource 搭配 only()，限制只產生必要的 5 條路由
 */
 
 Route::middleware(['auth'])->group(function () {
