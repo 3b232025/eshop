@@ -5,6 +5,7 @@ use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
+use App\Http\Controllers\OrderController;
 
 Route::resource('products', ProductController::class) ->only([
     'index', 'store', 'show', 'update', 'destroy'
@@ -51,6 +52,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('cart_items', CartItemController::class)->only(['index']);
 });
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('orders', OrderController::class)->only(['index']);
+});
 
 Route::get('/', function () {
     return view('welcome');
