@@ -3,6 +3,47 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\ProductController;
+
+Route::resource('products', ProductController::class);
+
+/*
+products.index
+URI：/products
+HTTP 動詞：GET
+控制器與方法：ProductController@index
+
+products.create
+URI：/products/create
+HTTP 動詞：GET
+控制器與方法：ProductController@create
+
+products.store
+URI：/products
+HTTP 動詞：POST
+控制器與方法：ProductController@store
+
+products.show
+URI：/products/{product}
+HTTP 動詞：GET
+控制器與方法：ProductController@show
+
+products.edit
+URI：/products/{product}/edit
+HTTP 動詞：GET
+控制器與方法：ProductController@edit
+
+products.update
+URI：/products/{product}
+HTTP 動詞：PUT / PATCH
+控制器與方法：ProductController@update
+
+products.destroy
+URI：/products/{product}
+HTTP 動詞：DELETE
+控制器與方法：ProductController@destroy
+*/
+
 
 Route::get('/', function () {
     return view('welcome');
