@@ -5,7 +5,9 @@ use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\ProductController;
 
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class) ->only([
+    'index', 'store', 'show', 'update', 'destroy'
+]);
 
 /*
 products.index
