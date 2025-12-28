@@ -9,4 +9,5 @@ class Staff extends Model
 {
     /** @use HasFactory<\Database\Factories\StaffFactory> */
     use HasFactory;
+    protected $fillable = ['name', 'email', 'password'];
 }
