@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 
-/*Route::resource('products', ProductController::class) ->only([
+Route::resource('products', ProductController::class) ->only([
     'index', 'store', 'show', 'update', 'destroy'
 ]);
 
@@ -38,7 +38,7 @@ use App\Http\Controllers\OrderController;
 
 // 以下為 Route::resource('products', ProductController::class)
 // 預設產生的七個路由（等價寫法）
-
+/*
 Route::get('/products', [ProductController::class, 'index']);        // 顯示商品列表
 Route::get('/products/create', [ProductController::class, 'create']); // 顯示新增商品表單
 Route::post('/products', [ProductController::class, 'store']);       // 新增商品
@@ -46,7 +46,7 @@ Route::get('/products/{product}', [ProductController::class, 'show']); // 顯示
 Route::get('/products/{product}/edit', [ProductController::class, 'edit']); // 編輯商品表單
 Route::put('/products/{product}', [ProductController::class, 'update']); // 更新商品
 Route::delete('/products/{product}', [ProductController::class, 'destroy']); // 刪除商品
-
+*/
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('cart_items', CartItemController::class)->only(['index']);
