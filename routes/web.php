@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('cart_items', CartItemController::class)->only(['index']);
 });
 
+Route::resource('cart_items', CartItemController::class)->only(['index','store']);
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('orders', OrderController::class)->only(['index', 'show']);

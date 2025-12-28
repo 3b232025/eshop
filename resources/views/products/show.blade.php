@@ -11,12 +11,12 @@
                         <span>${{ $product->price }}</span>
                     </div>
 
-                    {{-- Add to cart（用 form POST，送 product_id） --}}
+                    
                     <form action="{{ route('cart_items.store') }}" method="POST" class="d-flex gap-2">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                        {{-- 你目前 cart_items 有 quantity 就留；沒有就先拿掉 --}}
+                        
                         <input type="hidden" name="quantity" value="1">
 
                         <button class="btn btn-outline-dark flex-shrink-0" type="submit">
@@ -24,7 +24,7 @@
                         </button>
                     </form>
 
-                    {{-- 額外：回列表 --}}
+                    
                     <div class="mt-4">
                         <a href="{{ route('products.index') }}" class="btn btn-link px-0">
                             ← 回商品列表
