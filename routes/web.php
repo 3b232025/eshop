@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('orders', OrderController::class)->only(['index']);
+    Route::resource('orders', OrderController::class)->only(['index', 'show']);
 });
 
 Route::get('/', function () {
